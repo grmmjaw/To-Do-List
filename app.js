@@ -23,8 +23,16 @@ function addToList() {
   const task = document.createElement("li");
   const newContent = document.createTextNode(toDoInput.value);
   const checkBtn = document.createElement("button");
+  checkBtn.style.backgroundColor = "green";
+   checkBtn.style.color = "white";
+    checkBtn.style.border = "none";
+    checkBtn.style.padding = "10px"
+    checkBtn.style.borderRadius = "10px";
     const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete"
+    deleteBtn.innerText = "Delete";
+    deleteBtn.style.backgroundColor = "red";
+     deleteBtn.style.color = "white";
+     deleteBtn.style.border = "none";
   task.appendChild(newContent);
   task.appendChild(checkBtn);
   task.appendChild(deleteBtn);
