@@ -2,7 +2,14 @@ const addBtn = document.getElementById("addBtn");
 const toDoInput = document.getElementById("toDoInput");
 
 function markTaskBtn()
-  {  console.log("testwork")}
+  { const task = event.target.parentElement;
+ if (task.style.textDecoration === "line-through"){
+     task.style.textDecoration = "none"
+
+  }else{
+    task.style.textDecoration = "line-through";
+  }
+  }
   
   function deleteTask(){
     const task = event.target.parentElement;
