@@ -1,6 +1,13 @@
 const addBtn = document.getElementById("addBtn");
 const toDoInput = document.getElementById("toDoInput");
 
+function markTaskBtn()
+  {  console.log("testwork")}
+  
+  function deleteTask(){
+    const task = event.target.parentElement;
+    task.remove();  
+  }
 
 function addToList() {
   if (toDoInput.value.trim() === "") return;
@@ -8,25 +15,27 @@ function addToList() {
   const list = document.getElementById("toDoUnorderedList");
   const task = document.createElement("li");
   const newContent = document.createTextNode(toDoInput.value);
-
+  const checkBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete"
   task.appendChild(newContent);
+  task.appendChild(checkBtn);
+  task.appendChild(deleteBtn);
   list.appendChild(task);
 
   toDoInput.value = "";
+
+  checkBtn.addEventListener("click",markTaskBtn)
+  deleteBtn.addEventListener("click", deleteTask)
 }
 
-// get input value
-// add to document.createTextNode()
-// get addBtn to submit 
-//list functional 
 
 const form = document.getElementById("toDoForm");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();   
-  addToList();          
+  addToList();           
 });
 
 
-
-addBtn.addEventListener("click", addToList)
+addBtn.addEventListener("click", addToList);
