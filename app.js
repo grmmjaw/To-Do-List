@@ -2,12 +2,26 @@ const addBtn = document.getElementById("addBtn");
 const toDoInput = document.getElementById("toDoInput");
 
 
-function addToList(){
-    const task = document.createElement("text");
-    const newContent = document.createTextNode("what");
-    task.appendChild(newContent);
-  const list = document.getElementById("toDoUnorderedList")
-document.body.insertBefore(task, list);
-};
+function addToList() {
+  if (toDoInput.value.trim() === "") return;
 
-addBtn.addEventListener("click", addToList())
+  const list = document.getElementById("toDoUnorderedList");
+  const task = document.createElement("li");
+  const newContent = document.createTextNode(toDoInput.value);
+
+  task.appendChild(newContent);
+  list.appendChild(task);
+
+  toDoInput.value = "";
+  console.log(toDoInput.value)
+}
+
+// get input value
+// add to document.createTextNode()
+// get addBtn to submit 
+//list functional 
+
+
+
+
+addBtn.addEventListener("click", addToList)
