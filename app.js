@@ -13,7 +13,6 @@ function addToList() {
   list.appendChild(task);
 
   toDoInput.value = "";
-  console.log(toDoInput.value)
 }
 
 // get input value
@@ -21,6 +20,12 @@ function addToList() {
 // get addBtn to submit 
 //list functional 
 
+const form = document.getElementById("toDoForm");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();   
+  addToList();          
+});
 
 
 
