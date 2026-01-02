@@ -27,6 +27,8 @@ function addToList() {
   task.style.listStyle = "none"
   task.style.backgroundColor = "blue"
   task.style.border = "solid, black, 10px"
+  task.style.textAlign = "center"
+  task.style.position = "relative"
   const newContent = document.createTextNode(toDoInput.value);
   const checkBtn = document.createElement("button");
   checkBtn.style.backgroundColor = "green";
@@ -34,11 +36,17 @@ function addToList() {
     checkBtn.style.border = "none";
     checkBtn.style.padding = "10px"
     checkBtn.style.borderRadius = "10px";
+    checkBtn.style.position = "absolute";
+    checkBtn.style.left = "10px"
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
     deleteBtn.style.backgroundColor = "red";
      deleteBtn.style.color = "white";
      deleteBtn.style.border = "none";
+      deleteBtn.style.right = "10px";
+      deleteBtn.style.top = "50%";
+      deleteBtn.style.position = "absolute";
+deleteBtn.style.transform = "translateY(-50%)";
   task.appendChild(newContent);
   task.appendChild(checkBtn);
   task.appendChild(deleteBtn);
