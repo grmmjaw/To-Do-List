@@ -3,11 +3,12 @@ const toDoInput = document.getElementById("toDoInput");
 
 function markTaskBtn()
   { const task = event.target.parentElement;
- if (task.style.textDecoration === "line-through"){
+ if (task.style.textDecoration === "line-through white"){
      task.style.textDecoration = "none"
-
+       task.style.backgroundColor = "#a8d480";
   }else{
-    task.style.textDecoration = "line-through";
+    task.style.textDecoration = "line-through white";
+     task.style.backgroundColor = "#779892";
   }
   }
   
@@ -23,15 +24,19 @@ function addToList() {
   const list = document.getElementById("toDoUnorderedList");
 
   const task = document.createElement("li");
-  task.style.color = "white"
-  task.style.listStyle = "none"
-  task.style.backgroundColor = "blue"
-  task.style.border = "solid, black, 10px"
-  task.style.textAlign = "center"
-  task.style.position = "relative"
+  task.style.color = "white";
+  task.style.listStyle = "none";
+  task.style.backgroundColor = "#a8d480";
+  task.style.border = "solid #7c3f00 3px";
+  task.style.borderRadius = "6px"
+  task.style.textAlign = "center";
+  task.style.position = "relative";
+  task.style.paddingTop = "3px";
+  task.style.paddingBottom = "3px"
+  task.style.margin = "10px";
   const newContent = document.createTextNode(toDoInput.value);
   const checkBtn = document.createElement("button");
-  checkBtn.style.backgroundColor = "green";
+  checkBtn.style.backgroundColor = "#b18d8dff";
    checkBtn.style.color = "white";
     checkBtn.style.border = "none";
     checkBtn.style.padding = "10px"
@@ -43,6 +48,9 @@ function addToList() {
     deleteBtn.style.backgroundColor = "red";
      deleteBtn.style.color = "white";
      deleteBtn.style.border = "none";
+     deleteBtn.style.borderRadius = "5px";
+     deleteBtn.style.paddingRight = "15px";
+     deleteBtn.style.paddingLeft = "15px";
       deleteBtn.style.right = "10px";
       deleteBtn.style.top = "50%";
       deleteBtn.style.position = "absolute";
