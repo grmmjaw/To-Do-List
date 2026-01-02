@@ -15,12 +15,18 @@ function markTaskBtn()
     const task = event.target.parentElement;
     task.remove();  
   }
-
+// create div element in addToList 
+//task.style.backgroundColor = "red" witht his consideration 
 function addToList() {
   if (toDoInput.value.trim() === "") return;
 
   const list = document.getElementById("toDoUnorderedList");
+
   const task = document.createElement("li");
+  task.style.color = "white"
+  task.style.listStyle = "none"
+  task.style.backgroundColor = "blue"
+  task.style.border = "solid, black, 10px"
   const newContent = document.createTextNode(toDoInput.value);
   const checkBtn = document.createElement("button");
   checkBtn.style.backgroundColor = "green";
