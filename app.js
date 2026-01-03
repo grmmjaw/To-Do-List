@@ -3,12 +3,14 @@ const toDoInput = document.getElementById("toDoInput");
 
 function markTaskBtn()
   { const task = event.target.parentElement;
- if (task.style.textDecoration === "line-through white"){
+ if (task.style.textDecoration === "line-through black"){
      task.style.textDecoration = "none"
        task.style.backgroundColor = "#a8d480";
+       task.style.color = "white"
   }else{
-    task.style.textDecoration = "line-through white";
-     task.style.backgroundColor = "#779892";
+    task.style.textDecoration = "line-through black";
+     task.style.backgroundColor = "#9acb6b";
+     task.style.color = "#555555"
   }
   }
   
@@ -31,18 +33,29 @@ function addToList() {
   task.style.borderRadius = "6px"
   task.style.textAlign = "center";
   task.style.position = "relative";
-  task.style.paddingTop = "3px";
-  task.style.paddingBottom = "3px"
-  task.style.margin = "10px";
-  const newContent = document.createTextNode(toDoInput.value);
+  task.style.margin = "10px auto";
+  task.style.display = "flex";
+  task.style.flexDirection = "row";
+  task.style.alignItems = "center";
+  task.style.justifyContent = "space-between";
+  task.style.width = "100%";
+  task.style.textAlign = "center";
+  task.style.flexShrink = "1"
+task.style.padding = "8px 12px";
+
+
+  const textWrapper = document.createElement("div");
+textWrapper.textContent = toDoInput.value;
+textWrapper.style.flexGrow = "1";
+textWrapper.style.textAlign = "center";
   const checkBtn = document.createElement("button");
-  checkBtn.style.backgroundColor = "#b18d8dff";
+  checkBtn.style.backgroundColor = "white";
    checkBtn.style.color = "white";
     checkBtn.style.border = "none";
-    checkBtn.style.padding = "10px"
+    checkBtn.style.padding = "5px"
     checkBtn.style.borderRadius = "10px";
-    checkBtn.style.position = "absolute";
-    checkBtn.style.left = "10px"
+    checkBtn.style.marginTop = "4px";
+checkBtn.style.flexShrink = "0";
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
     deleteBtn.style.backgroundColor = "red";
@@ -51,13 +64,10 @@ function addToList() {
      deleteBtn.style.borderRadius = "5px";
      deleteBtn.style.paddingRight = "15px";
      deleteBtn.style.paddingLeft = "15px";
-      deleteBtn.style.right = "10px";
-      deleteBtn.style.top = "50%";
-      deleteBtn.style.position = "absolute";
-deleteBtn.style.transform = "translateY(-50%)";
-  task.appendChild(newContent);
+deleteBtn.style.flexShrink = "0";
   task.appendChild(checkBtn);
-  task.appendChild(deleteBtn);
+task.appendChild(textWrapper);
+task.appendChild(deleteBtn);
   list.appendChild(task);
 
   toDoInput.value = "";
