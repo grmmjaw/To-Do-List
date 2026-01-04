@@ -24,7 +24,7 @@ function addToList() {
   if (toDoInput.value.trim() === "") return;
 
   const list = document.getElementById("toDoUnorderedList");
-
+  list.style.paddingRight = "35px"
   const task = document.createElement("li");
   task.style.color = "white";
   task.style.listStyle = "none";
@@ -33,7 +33,6 @@ function addToList() {
   task.style.borderRadius = "6px"
   task.style.textAlign = "center";
   task.style.position = "relative";
-  task.style.margin = "10px auto";
   task.style.display = "flex";
   task.style.flexDirection = "row";
   task.style.alignItems = "center";
@@ -41,8 +40,9 @@ function addToList() {
   task.style.width = "100%";
   task.style.textAlign = "center";
   task.style.flexShrink = "1"
-task.style.padding = "8px 12px";
-
+task.style.padding = "8px";
+task.style.marginBottom = "10px";
+task.style.boxSizing = "border-box";
 
   const textWrapper = document.createElement("div");
 textWrapper.textContent = toDoInput.value;
