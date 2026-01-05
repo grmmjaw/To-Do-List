@@ -1,6 +1,9 @@
 const addBtn = document.getElementById("addBtn");
 const toDoInput = document.getElementById("toDoInput");
 
+
+tasks = [];
+
 function markTaskBtn()
   { const task = event.target.parentElement;
  if (task.style.textDecoration === "line-through black"){
@@ -29,7 +32,7 @@ function addToList() {
   task.style.color = "white";
   task.style.listStyle = "none";
   task.style.backgroundColor = "#a8d480";
-  task.style.border = "solid #7c3f00 3px";
+  task.style.border = "solid #7c3f00 0.5px";
   task.style.borderRadius = "6px"
   task.style.textAlign = "center";
   task.style.position = "relative";
