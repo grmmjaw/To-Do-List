@@ -2,7 +2,7 @@ const addBtn = document.getElementById("addBtn");
 const toDoInput = document.getElementById("toDoInput");
 
 
-tasks = [];
+const tasks = [];
 
 function markTaskBtn()
   { const task = event.target.parentElement;
@@ -73,8 +73,13 @@ task.appendChild(textWrapper);
 task.appendChild(deleteBtn);
   list.appendChild(task);
 
-  toDoInput.value = "";
-
+  
+  const newTask = {
+    text: toDoInput.value,
+    completed: false};
+    tasks.push(newTask);
+    console.log(tasks)
+toDoInput.value = "";
   checkBtn.addEventListener("click",markTaskBtn)
   deleteBtn.addEventListener("click", deleteTask)
 }
