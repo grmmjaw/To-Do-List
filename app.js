@@ -3,6 +3,9 @@ const toDoInput = document.getElementById("toDoInput");
 
 
 const tasks = [];
+JSON.stringify(tasks);
+
+
 
 function markTaskBtn()
   { const task = event.target.parentElement;
@@ -10,11 +13,15 @@ function markTaskBtn()
      task.style.textDecoration = "none"
        task.style.backgroundColor = "#a8d480";
        task.style.color = "white"
+    
   }else{
     task.style.textDecoration = "line-through black";
      task.style.backgroundColor = "#9acb6b";
-     task.style.color = "#555555"
-  }
+     task.style.color = "#555555";
+     
+    }
+
+
   }
   
   function deleteTask(){
@@ -22,7 +29,7 @@ function markTaskBtn()
     task.remove();  
   }
 // create div element in addToList 
-//task.style.backgroundColor = "red" witht his consideration 
+//task.style.backgroundColor = "red" witht hi   s consideration 
 function addToList() {
   if (toDoInput.value.trim() === "") return;
 
@@ -73,17 +80,23 @@ task.appendChild(textWrapper);
 task.appendChild(deleteBtn);
   list.appendChild(task);
 
-  
+  const index = tasks.length - 1;
+  task.dataset.index = index;
   const newTask = {
     text: toDoInput.value,
     completed: false};
     tasks.push(newTask);
-    console.log(tasks)
 toDoInput.value = "";
   checkBtn.addEventListener("click",markTaskBtn)
   deleteBtn.addEventListener("click", deleteTask)
+  saveTasks()
+  
 }
 
+function saveTasks(){
+localStorage.setItem("tasks", JSON.stringify(tasks))
+console.log(JSON.stringify(tasks))
+}
 
 const form = document.getElementById("toDoForm");
 
