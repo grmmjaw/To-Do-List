@@ -5,24 +5,23 @@ const toDoInput = document.getElementById("toDoInput");
 const tasks = [];
 JSON.stringify(tasks);
 
-
-
-function markTaskBtn()
-  { const task = event.target.parentElement;
- if (task.style.textDecoration === "line-through black"){
-     task.style.textDecoration = "none"
-       task.style.backgroundColor = "#a8d480";
-       task.style.color = "white"
-    
-  }else{
-    task.style.textDecoration = "line-through black";
-     task.style.backgroundColor = "#9acb6b";
-     task.style.color = "#555555";
-     
-    }
-
-
+function markTaskBtn(event) {
+  const taskEl = event.target.parentElement;
+  const index = Number(taskEl.dataset.index);
+  // toggle the data
+  tasks[index].completed = !tasks[index].completed;
+  if (tasks[index].completed) {
+    taskEl.style.textDecoration = "line-through";
+    taskEl.style.backgroundColor = "#9acb6b";
+    taskEl.style.color = "#555555";
+  } else {
+    taskEl.style.textDecoration = "none";
+    taskEl.style.backgroundColor = "#a8d480";
+    taskEl.style.color = "white";
   }
+  saveTasks();
+}
+
   
   function deleteTask(){
     const task = event.target.parentElement;
@@ -80,12 +79,19 @@ task.appendChild(textWrapper);
 task.appendChild(deleteBtn);
   list.appendChild(task);
 
-  const index = tasks.length - 1;
-  task.dataset.index = index;
-  const newTask = {
-    text: toDoInput.value,
-    completed: false};
-    tasks.push(newTask);
+
+  // create task object
+const newTask = {
+  text: toDoInput.value,
+  completed: false
+};
+// push to array []
+tasks.push(newTask);
+//get correct index
+const index = tasks.length - 1;
+// attach index to DOM
+task.dataset.index = index;
+
 toDoInput.value = "";
   checkBtn.addEventListener("click",markTaskBtn)
   deleteBtn.addEventListener("click", deleteTask)
@@ -97,6 +103,32 @@ function saveTasks(){
 localStorage.setItem("tasks", JSON.stringify(tasks))
 console.log(JSON.stringify(tasks))
 }
+function loadTasks(){
+    const savedTasks = localStorage.setItem("tasks", JSON.stringify(tasks));
+      console.log("raw from localStorage:", savedTasks);
+      if (!savedTasks) return
+      const parsed = JSON.parse(savedTasks);
+        console.log("parsed tasks:", parsed);
+         tasks.push(...parsed);
+  console.log("tasks array after load:", tasks);
+    }
+    function renderTasks() {
+  const list = document.getElementById("toDoUnorderedList");
+  list.innerHTML = "";
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement("li");
+    li.dataset.index = index;
+    li.textContent = task.text;
+
+    if (task.completed) {
+      li.style.textDecoration = "line-through";
+    }
+
+    list.appendChild(li);
+  });
+}
+
 
 const form = document.getElementById("toDoForm");
 
@@ -107,3 +139,5 @@ form.addEventListener("submit", function (e) {
 
 
 addBtn.addEventListener("click", addToList);
+loadTasks();
+renderTasks();
