@@ -104,7 +104,7 @@ localStorage.setItem("tasks", JSON.stringify(tasks))
 console.log(JSON.stringify(tasks))
 }
 function loadTasks(){
-    const savedTasks = localStorage.setItem("tasks", JSON.stringify(tasks));
+    const savedTasks = localStorage.getItem("tasks");
       console.log("raw from localStorage:", savedTasks);
       if (!savedTasks) return
       const parsed = JSON.parse(savedTasks);
