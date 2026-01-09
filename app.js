@@ -10,16 +10,9 @@ function markTaskBtn(event) {
   const index = Number(taskEl.dataset.index);
   // toggle the data
   tasks[index].completed = !tasks[index].completed;
-  if (tasks[index].completed) {
-    taskEl.style.textDecoration = "line-through";
-    taskEl.style.backgroundColor = "#9acb6b";
-    taskEl.style.color = "#555555";
-  } else {
-    taskEl.style.textDecoration = "none";
-    taskEl.style.backgroundColor = "#a8d480";
-    taskEl.style.color = "white";
-  }
+
   saveTasks();
+  renderTasks()
 }
 
   
@@ -121,9 +114,15 @@ function loadTasks(){
     li.dataset.index = index;
     li.textContent = task.text;
 
-    if (task.completed) {
-      li.style.textDecoration = "line-through";
-    }
+    if (task.completed){
+    taskEl.style.textDecoration = "line-through";
+    taskEl.style.backgroundColor = "#9acb6b";
+    taskEl.style.color = "#555555";
+  } else {
+    taskEl.style.textDecoration = "none";
+    taskEl.style.backgroundColor = "#a8d480";
+    taskEl.style.color = "white";
+  }
 
     list.appendChild(li);
   });
