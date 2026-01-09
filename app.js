@@ -3,7 +3,7 @@ const toDoInput = document.getElementById("toDoInput");
 
 
 const tasks = [];
-JSON.stringify(tasks);
+
 
 function markTaskBtn(event) {
   const taskEl = event.target.parentElement;
@@ -17,9 +17,12 @@ function markTaskBtn(event) {
 
   
   function deleteTask(){
-    const task = event.target.parentElement;
-    task.remove();  
-  }
+    const taskEl = event.target.parentElement;
+    const index = Number(taskEl.dataset.index)
+    task.splice(index,1);
+    saveTasks();
+    renderTasks();  
+}     
 // create div element in addToList 
 //task.style.backgroundColor = "red" witht hi   s consideration 
 function addToList() {
@@ -115,14 +118,14 @@ function loadTasks(){
     li.textContent = task.text;
 
     if (task.completed){
-    taskEl.style.textDecoration = "line-through";
-    taskEl.style.backgroundColor = "#9acb6b";
-    taskEl.style.color = "#555555";
+    li.style.textDecoration = "line-through";
+    li.style.backgroundColor = "#9acb6b";
+    li.style.color = "#555555";
   } else {
-    taskEl.style.textDecoration = "none";
-    taskEl.style.backgroundColor = "#a8d480";
-    taskEl.style.color = "white";
-  }
+    li.style.textDecoration = "none";
+    li.style.backgroundColor = "#a8d480";
+    li.style.color = "white";
+  } 
 
     list.appendChild(li);
   });
