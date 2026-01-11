@@ -16,41 +16,28 @@ function markTaskBtn(event) {
 }
 
   
-  function deleteTask(){
+  function deleteTask(event){
     const taskEl = event.target.parentElement;
     const index = Number(taskEl.dataset.index)
+   
     tasks.splice(index,1);
     saveTasks();
     renderTasks();  
 }     
-// create div element in addToList 
-//task.style.backgroundColor = "red" witht hi   s consideration 
+
 function addToList() {
   if (toDoInput.value.trim() === "") return;
 
-  task.appendChild(checkBtn);
-task.appendChild(textWrapper);
-task.appendChild(deleteBtn);
-  list.appendChild(task);
 
-
-  // create task object
 const newTask = {
   text: toDoInput.value,
   completed: false
 };
-// push to array []
-tasks.push(newTask);
-//get correct index
-const index = tasks.length - 1;
-// attach index to DOM
-task.dataset.index = index;
 
-toDoInput.value = "";
-  checkBtn.addEventListener("click",markTaskBtn)
-  deleteBtn.addEventListener("click", deleteTask)
+tasks.push(newTask);
   saveTasks()
-  
+  renderTasks()
+toDoInput.value = "";
 }
 
 function saveTasks(){
